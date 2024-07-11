@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.planner.activity.ActivityService;
+import com.example.planner.activity.DTO.ActivityRequestPayload;
+import com.example.planner.activity.DTO.ActivityResponse;
 import com.example.planner.participant.Participant;
 import com.example.planner.participant.ParticipantService;
 import com.example.planner.participant.DTO.ParticipantRequestPayload;
@@ -30,6 +33,8 @@ public class TripController {
     private TripRepository tripRepository;
     @Autowired
     private ParticipantService participantService;
+    @Autowired
+    private ActivityService activityService;
 
 
     @PostMapping
@@ -86,5 +91,24 @@ public class TripController {
         List<ParticipantResponse> participants = this.participantService.getAllParticipants(id);
 
         return ResponseEntity.ok(participants);
+    }
+
+    @PostMapping("/{id}/activities")
+    public ResponseEntity<ActivityResponse> createActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) { 
+        Optional<Trip> query = this.tripRepository.findById(id);
+
+        if (query.isPresent()) { 
+            Trip trip = query.get();
+            ActivityResponse activity = this.activityService.register(payload, trip);
+            return ResponseEntity.ok(activity);
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/{id}/activities")
+    public ResponseEntity<List<ActivityResponse>> listActivities(@PathVariable UUID id) { 
+        List<ActivityResponse> activities = this.activityService.getAll(id);
+        return ResponseEntity.ok(activities);
     }
 }
