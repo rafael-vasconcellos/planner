@@ -1,0 +1,30 @@
+### add activity
+POST http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/activities
+Content-Type: application/json
+
+{ 
+    "title": "Visita ao cristo",
+    "occursAt": "2024-08-10T00:17:38.686Z"
+}
+
+### get activities
+GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/activities
+
+
+
+
+
+
+
+### add link
+POST http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/links
+Content-Type: application/json
+
+{ 
+    "url": "example.com",
+    "title": "reserva airbnb"
+}
+
+
+### get links
+GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/links

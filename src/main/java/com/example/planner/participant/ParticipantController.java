@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.planner.participant.DTO.ParticipantRequestPayload;
+import com.example.planner.participant.DTO.ConfirmParticipantRequestPayload;
+
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -22,17 +24,16 @@ public class ParticipantController {
 
 
     @PutMapping("/{participantId}/confirm")
-    public ResponseEntity<Participant> confirm(@PathVariable UUID participantId, @RequestBody ParticipantRequestPayload payload) { 
+    public ResponseEntity<Participant> confirm(@PathVariable UUID participantId, @RequestBody @Valid ConfirmParticipantRequestPayload payload) { 
         Optional<Participant> query = this.participantRepository.findById(participantId);
 
-        if (query.isPresent() && !payload.name().isEmpty()) { 
+        if (query.isPresent()) { 
             Participant participant = query.get();
             participant.setName(payload.name());
             participant.setIsConfirmed(true);
             this.participantRepository.save(participant);
             return ResponseEntity.ok(participant);
-
-        } else if (payload.name().isEmpty()) { return ResponseEntity.badRequest().build(); }
+        }
 
         return ResponseEntity.notFound().build();
     }

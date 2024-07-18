@@ -2,7 +2,7 @@ package com.example.planner.link;
 
 import java.util.UUID;
 
-import com.example.planner.link.DTO.LinkPayload;
+import com.example.planner.link.DTO.CreateLinkRequestPayload;
 import com.example.planner.trip.Trip;
 
 import jakarta.persistence.Column;
@@ -39,7 +39,7 @@ public class Link {
     @JoinColumn(name = "trip_id")
     private Trip trip;
 
-    public Link(LinkPayload payload, Trip trip) { 
+    public Link(CreateLinkRequestPayload payload, Trip trip) { 
         this.url = payload.url();
         this.trip = trip;
         this.title = payload.title();

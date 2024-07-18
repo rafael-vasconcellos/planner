@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.example.planner.participant.DTO.ParticipantRequestPayload;
 import com.example.planner.trip.Trip;
 
 
@@ -41,13 +40,6 @@ public class Participant {
     @ManyToOne
     @JoinColumn(name = "trip_id")
     private Trip trip;
-
-    public Participant(ParticipantRequestPayload payload, Trip trip) { 
-        this.name = payload.name();
-        this.email = payload.email();
-        this.trip = trip;
-        this.isConfirmed = payload.name().isEmpty()? false : true;
-    }
 
     public Participant(String email, Trip trip) { 
         this.email = email;

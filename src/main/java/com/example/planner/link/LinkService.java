@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.planner.link.DTO.CreateLinkRequestPayload;
 import com.example.planner.link.DTO.LinkPayload;
 import com.example.planner.trip.Trip;
 
@@ -15,7 +16,7 @@ public class LinkService {
     @Autowired
     private LinkRepository repository;
 
-    public Link add(LinkPayload payload, Trip trip) { 
+    public Link add(CreateLinkRequestPayload payload, Trip trip) { 
         Link link = new Link(payload, trip);
         this.repository.save(link);
         return link;

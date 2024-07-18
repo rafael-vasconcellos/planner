@@ -1,0 +1,30 @@
+POST http://localhost:8080/trips
+Content-Type: application/json
+
+{
+    "destination": "Florianópolis, SC",
+    "ownerName": "Rafael",
+    "ownerEmail": "rafael@example.com",
+    "startsAt": "2024-08-10T00:17:38.686Z",
+    "endsAt": "2024-10-10T00:17:38.686Z",
+    "invites": [
+        "ana@example.com"
+    ]
+}
+
+###
+GET http://localhost:8080/trips?email=rafael@example.com
+
+###
+GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645
+
+###
+PUT http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645
+Content-Type: application/json
+
+{ 
+    "destination": "Porto Alegre, RS"
+}
+
+
+

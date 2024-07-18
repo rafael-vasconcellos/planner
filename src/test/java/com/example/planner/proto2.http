@@ -1,0 +1,19 @@
+### create participant
+POST http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/participants/invite
+Content-Type: application/json
+
+{ 
+    "email": "bea@example.com"
+}
+
+### get participants
+GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/participants
+
+
+### confirm participant
+PUT http://localhost:8080/participants/89e2e81f-57a5-458a-ba96-2a691a70539b/confirm
+Content-Type: application/json
+
+{ 
+    "name": "Beatriz Ribeiro"
+}
