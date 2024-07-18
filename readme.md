@@ -1,6 +1,6 @@
 # Sobre
 
-projeto do NLW de 2024
+projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 2024
 
 > O projeto Journey tem como objetivo ajudar ****o usuário a organizar viagens à trabalho ou lazer. O usuário pode criar uma viagem com nome, data de início e fim. Dentro da viagem o usuário pode planejar sua viagem adicionando atividades para realizar em cada dia.
 > 
@@ -18,12 +18,13 @@ projeto do NLW de 2024
 
 
 ## fluxo
-1. destino e datas
-2. convidados (apenas email)
-3. seu nome e email
-4. confirmar viagem
-5. convidados recebem email e então confirmam sua presença escrevendo seu nome
-6. é possível alterar a viagem e cadastrar atividades
+**form1:** destino e datas  
+**form2:** convidados (apenas email)  
+**form3:** seu nome e email  
+**form4:** confirmar viagem  
+
+**5.** convidados recebem email e então confirmam sua presença escrevendo seu nome.  
+**6.** é possível alterar a viagem, cadastrar atividades e adicionar links relevantes a viagem.
 
 
 ## to study
