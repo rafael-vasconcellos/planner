@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.planner.link.Link;
 import com.example.planner.link.LinkService;
 import com.example.planner.link.DTO.CreateLinkRequestPayload;
-import com.example.planner.link.DTO.LinkPayload;
+import com.example.planner.link.DTO.LinkResponseBody;
 import com.example.planner.trip.Trip;
 import com.example.planner.trip.TripRepository;
 
@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("trips/{id}/links")
+@RequestMapping("trips/{tripId}/links")
 public class TripLinksController { 
     @Autowired
     private TripRepository tripRepository;
@@ -33,8 +33,8 @@ public class TripLinksController {
 
 
     @PostMapping
-    public ResponseEntity<Link> addLink(@PathVariable UUID id, @RequestBody @Valid CreateLinkRequestPayload payload) { 
-        Optional<Trip> tripOptional = this.tripRepository.findById(id);
+    public ResponseEntity<Link> addLink(@PathVariable UUID tripId, @RequestBody @Valid CreateLinkRequestPayload payload) { 
+        Optional<Trip> tripOptional = this.tripRepository.findById(tripId);
 
         if (tripOptional.isPresent()) { 
             Trip trip = tripOptional.get();
@@ -46,8 +46,8 @@ public class TripLinksController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LinkPayload>> listLinks(@PathVariable UUID id) { 
-        List<LinkPayload> list = this.linkService.getAll(id);
+    public ResponseEntity<List<LinkResponseBody>> listLinks(@PathVariable UUID tripId) { 
+        List<LinkResponseBody> list = this.linkService.getAll(tripId);
         return ResponseEntity.ok(list);
     }
 

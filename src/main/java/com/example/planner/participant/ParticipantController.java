@@ -1,10 +1,10 @@
 package com.example.planner.participant;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,21 +20,19 @@ import jakarta.validation.Valid;
 @RequestMapping("/participants")
 public class ParticipantController { 
     @Autowired
-    private ParticipantRepository participantRepository;
+    private ParticipantService participantService;
 
 
     @PutMapping("/{participantId}/confirm")
     public ResponseEntity<Participant> confirm(@PathVariable UUID participantId, @RequestBody @Valid ConfirmParticipantRequestPayload payload) { 
-        Optional<Participant> query = this.participantRepository.findById(participantId);
-
-        if (query.isPresent()) { 
-            Participant participant = query.get();
-            participant.setName(payload.name());
-            participant.setIsConfirmed(true);
-            this.participantRepository.save(participant);
-            return ResponseEntity.ok(participant);
-        }
-
-        return ResponseEntity.notFound().build();
+        Participant participant = this.participantService.confirm(participantId, payload);
+        return ResponseEntity.ok(participant);
     }
+
+    @DeleteMapping("/{participantId}")
+    public ResponseEntity<?> remove(@PathVariable UUID participantId) { 
+        this.participantService.remove(participantId);
+        return ResponseEntity.ok().build();
+    }
+
 }

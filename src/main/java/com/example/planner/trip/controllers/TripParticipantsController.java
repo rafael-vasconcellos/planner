@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.planner.participant.Participant;
 import com.example.planner.participant.ParticipantService;
 import com.example.planner.participant.DTO.InviteParticipantRequestPayload;
-import com.example.planner.participant.DTO.ParticipantResponse;
+import com.example.planner.participant.DTO.ParticipantResponseBody;
 import com.example.planner.trip.Trip;
 import com.example.planner.trip.TripRepository;
 
@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/trips/{id}/participants")
+@RequestMapping("/trips/{tripId}/participants")
 public class TripParticipantsController { 
     @Autowired
     private TripRepository tripRepository;
@@ -33,8 +33,8 @@ public class TripParticipantsController {
 
 
     @PostMapping("/invite")
-    public ResponseEntity<Participant> createInvite(@PathVariable UUID id, @RequestBody @Valid InviteParticipantRequestPayload payload) { 
-        Optional<Trip> query = this.tripRepository.findById(id);
+    public ResponseEntity<Participant> createInvite(@PathVariable UUID tripId, @RequestBody @Valid InviteParticipantRequestPayload payload) { 
+        Optional<Trip> query = this.tripRepository.findById(tripId);
 
         if (query.isPresent()) {
             Trip trip = query.get();
@@ -46,8 +46,8 @@ public class TripParticipantsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ParticipantResponse>> getParticipants(@PathVariable UUID id) { 
-        List<ParticipantResponse> participants = this.participantService.getAllParticipants(id);
+    public ResponseEntity<List<ParticipantResponseBody>> getParticipants(@PathVariable UUID tripId) { 
+        List<ParticipantResponseBody> participants = this.participantService.getAllParticipants(tripId);
         return ResponseEntity.ok(participants);
     }
 

@@ -7,6 +7,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 // extends ResponseEntityExceptionHandler
@@ -19,6 +22,16 @@ public class MyExceptionHandler {
         List<FieldError> errors = ex.getFieldErrors();
         List<ErrorData> mappedErrors = errors.stream().map(ErrorData::new).toList();
         return ResponseEntity.badRequest().body(mappedErrors);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<?> entityNotFound(EntityNotFoundException ex) { 
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<?> noResourceFound(NoResourceFoundException ex) { 
+        return ResponseEntity.notFound().build();
     }
 
     public record ErrorData(String field, String message) { 

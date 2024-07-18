@@ -1,5 +1,5 @@
 ### add activity
-POST http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/activities
+POST http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b/activities
 Content-Type: application/json
 
 { 
@@ -8,16 +8,16 @@ Content-Type: application/json
 }
 
 ### get activities
-GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/activities
+GET http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b/activities
 
-
-
+### delete activity
+DELETE http://localhost:8080/activities/62b2e4b1-2f3d-4d73-98a6-91c7665a2bcc
 
 
 
 
 ### add link
-POST http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/links
+POST http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b/links
 Content-Type: application/json
 
 { 
@@ -25,6 +25,8 @@ Content-Type: application/json
     "title": "reserva airbnb"
 }
 
-
 ### get links
-GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645/links
+GET http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b/links
+
+### delete activity
+DELETE http://localhost:8080/links/8990be64-e0de-4a27-b730-5900a0043077

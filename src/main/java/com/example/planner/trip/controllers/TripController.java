@@ -24,6 +24,7 @@ import com.example.planner.trip.TripRepository;
 import com.example.planner.trip.DTO.CreateTripRequestPayload;
 import com.example.planner.trip.DTO.TripRequestPayload;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 
 
@@ -37,7 +38,7 @@ public class TripController {
 
 
     @PostMapping
-    public ResponseEntity<Trip> createTrip(@RequestBody CreateTripRequestPayload payload) {
+    public ResponseEntity<Trip> createTrip(@RequestBody @Valid CreateTripRequestPayload payload) {
         Trip trip = new Trip(payload);
         this.tripRepository.save(trip);
         this.participantService.registerList(payload.invites(), trip);

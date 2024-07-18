@@ -12,14 +12,14 @@ Content-Type: application/json
     ]
 }
 
-###
+### get by email
 GET http://localhost:8080/trips?email=rafael@example.com
 
-###
-GET http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645
+### get by id
+GET http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b
 
-###
-PUT http://localhost:8080/trips/522b91bc-8a3b-4ede-97c7-f094af88c645
+### update trip
+PUT http://localhost:8080/trips/64afd280-fde1-4826-95cb-a05c22134c7b
 Content-Type: application/json
 
 { 
@@ -28,3 +28,5 @@ Content-Type: application/json
 
 
 
+### invalid route
+GET http://localhost:8080/dada

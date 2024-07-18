@@ -2,7 +2,7 @@ package com.example.planner.participant.DTO;
 
 import java.util.UUID;
 
-public record ParticipantResponse(
+public record ParticipantResponseBody(
     UUID id, 
     String name, 
     String email,
