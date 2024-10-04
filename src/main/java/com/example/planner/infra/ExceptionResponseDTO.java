@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ExceptionResponse { 
+public class ExceptionResponseDTO { 
     private String title;
     private HttpStatus status;
     private String details;
