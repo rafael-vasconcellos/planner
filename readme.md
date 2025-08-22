@@ -24,8 +24,15 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 **form4:** confirmar viagem  
 
 **5.** convidados recebem email e então confirmam sua presença escrevendo seu nome.  
-**6.** é possível alterar a viagem, cadastrar atividades e adicionar links relevantes a viagem.
+**6.** é possível alterar a viagem, cadastrar atividades e adicionar links relevantes a viagem.  
 
+## todo
+
+switch to postgresSQL  
+use docker compose  
+add API documentation  
+enhance tests  
+enhance error handling  
 
 ## to study
 flyway  
