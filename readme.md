@@ -28,6 +28,8 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 
 ## todo
 
+SAST & SCA ✅
+DAST
 switch to postgresSQL  
 use docker compose  
 add API documentation  
