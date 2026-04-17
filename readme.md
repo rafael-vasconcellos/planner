@@ -2,7 +2,7 @@
 
 projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 2024
 
-> O projeto Journey tem como objetivo ajudar ****o usuário a organizar viagens à trabalho ou lazer. O usuário pode criar uma viagem com nome, data de início e fim. Dentro da viagem o usuário pode planejar sua viagem adicionando atividades para realizar em cada dia.
+> O projeto Journey tem como objetivo ajudar o usuário a organizar viagens à trabalho ou lazer. O usuário pode criar uma viagem com nome, data de início e fim. Dentro da viagem o usuário pode planejar sua viagem adicionando atividades para realizar em cada dia.
 > 
 
 ## Requisitos
@@ -18,13 +18,13 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 
 
 ## fluxo
-**form1:** destino e datas  
-**form2:** convidados (apenas email)  
-**form3:** seu nome e email  
-**form4:** confirmar viagem  
+**formulário 1:** destino e datas  
+**formulário 2:** convidados (apenas email)  
+**formulário 3:** seu nome e email  
+**formulário 4:** confirmar viagem  
 
-**5.** convidados recebem email e então confirmam sua presença escrevendo seu nome.  
-**6.** é possível alterar a viagem, cadastrar atividades e adicionar links relevantes a viagem.  
+**1.** convidados recebem email e então confirmam sua presença escrevendo seu nome.  
+**2.** é possível alterar a viagem, cadastrar atividades e adicionar links relevantes a viagem.  
 
 ## todo
 
