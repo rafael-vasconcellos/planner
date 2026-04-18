@@ -28,13 +28,13 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 
 ## todo
 
-SAST & SCA ✅
-DAST
-switch to postgresSQL  
-use docker compose  
-add API documentation  
-enhance tests  
+SAST & SCA ✅  
+DAST  
+use docker  
 enhance error handling  
+add API documentation  
+enhance tests ✅  
+switch to postgresSQL❓  
 
 ## to study
 flyway  
