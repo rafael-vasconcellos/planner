@@ -40,10 +40,10 @@ public class TripController {
     @PostMapping
     public ResponseEntity<Trip> createTrip(@RequestBody @Valid CreateTripRequestPayload payload) {
         Trip trip = new Trip(payload);
-        this.tripRepository.save(trip);
-        this.participantService.registerList(payload.invites(), trip);
+        Trip savedTrip = this.tripRepository.save(trip);
+        this.participantService.registerList(payload.invites(), savedTrip);
 
-        return ResponseEntity.ok(trip);
+        return ResponseEntity.ok(savedTrip);
     }
 
     @GetMapping("/{id}")
