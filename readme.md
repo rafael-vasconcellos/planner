@@ -30,7 +30,7 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 
 SAST & SCA ✅  
 DAST  
-use docker  
+use docker ✅  
 enhance error handling  
 add API documentation  
 enhance tests ✅  
