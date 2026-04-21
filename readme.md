@@ -28,10 +28,11 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 
 ## todo
 
-SAST & SCA ✅  
-DAST  
-use docker ✅  
 enhance error handling  
+DAST  
+SAST & SCA ✅  
+add prometheus and grafana ✅  
+use docker ✅  
 add API documentation ✅  
 enhance tests ✅  
 switch to postgresSQL❓  
