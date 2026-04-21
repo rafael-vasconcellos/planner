@@ -17,7 +17,7 @@ projeto do [NLW](https://www.figma.com/community/file/1392276515495389646) de 20
 6. Novos participantes podem ser convidados dentro da página do evento através do e-mail e assim devem passar pelo fluxo de confirmação como qualquer outro convidado
 
 
-## fluxo
+## Fluxo
 **formulário 1:** destino e datas  
 **formulário 2:** convidados (apenas email)  
 **formulário 3:** seu nome e email  
@@ -516,6 +516,73 @@ curl http://localhost:8080/trips/123e4567-e89b-12d3-a456-426614174000/links
 | `500` | Internal Server Error - Erro no servidor |
 
 ---
+
+## Análise preliminar de estratégias de rate limit
+
+**Quanto mais cedo barrar, melhor**. Rate limit dentro da aplicação funciona, mas ainda custa CPU, memória, conexão, parsing… tudo isso já aconteceu antes do bloqueio. Então, geralmente é mais eficiente barrar antes mesmo de chegar à aplicação. 
+
+### 🧱 1. Na borda (CDN / reverse proxy / gateway) — mais eficiente
+Bloqueia antes de chegar ao seu servidor. Esse é o padrão em sistemas grandes. Os filtros usam padrões avançados de fingerprinting. 
+```
+Client → CDN/Proxy (rate limit) → App
+```
+
+Se bloquear aqui:
+- sua aplicação nem recebe as requests
+- zero CPU do app
+- zero DB
+- zero lógica
+
+Exemplos:
+- Cloudflare (Rate limiting + WAF)
+- AWS API Gateway
+- NGINX
+- Fastly
+- Envoy Proxy
+
+### ⚙️ 2. Middleware na aplicação — mais simples, menos eficiente
+```
+Client → App → middleware rate limit → controller
+```
+
+Aqui já consumiu:
+- conexão
+- thread/event loop
+- parsing headers
+- talvez autenticação
+<br/>
+Mas ainda é ok pra maioria dos projetos.
+
+### 🚫 3. Rate limit dentro do endpoint — pior opção
+```
+controller() {
+  checkRateLimit()
+}
+```
+<br/>
+Aqui você já gastou tudo.
+
+### Filtros de rate limit
+- por user autenticado
+- fingerprint
+- por método (ex.: POST costuma ser mais caro)
+- por rota
+- rate limit por custo (mais avançado)
+  - Cada endpoint tem peso
+    - GET /health = 1
+    - GET /products = 2
+    - POST /checkout = 10
+
+### Estratégia preliminar ideal
+```
+CDN/WAF rate limit (grosso: anti-bot, flood) / 100 req/s por IP
+  ↓
+NGINX load balancer rate limit
+  ↓
+App rate limit (fino por usuário/token, user fairness) / 10 req/s por user
+  ↓
+DB: proteção extra
+```
 
 ## to study
 flyway  
