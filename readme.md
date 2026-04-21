@@ -573,7 +573,8 @@ Aqui você já gastou tudo.
     - GET /products = 2
     - POST /checkout = 10
 
-### Estratégia preliminar ideal
+### A Estratégia Mais Eficiente: Defesa em Profundidade (Camadas)
+A estratégia mais eficiente não é uma só, mas sim aplicar o rate limit em camadas, filtrando o tráfego o mais cedo possível.
 ```
 CDN/WAF rate limit (grosso: anti-bot, flood) / 100 req/s por IP
   ↓
