@@ -1,0 +1,40 @@
+{
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Targets UP",
+      "targets": [
+        {
+          "expr": "sum(up)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 }
+    },
+    {
+      "type": "stat",
+      "title": "Scrape duration",
+      "targets": [
+        {
+          "expr": "avg(scrape_duration_seconds)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Targets",
+      "targets": [
+        {
+          "expr": "up",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 4 }
+    }
+  ],
+  "schemaVersion": 38,
+  "title": "Prometheus",
+  "version": 1
+}

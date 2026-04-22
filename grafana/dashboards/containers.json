@@ -1,0 +1,51 @@
+{
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "CPU usage",
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[1m])) by (container)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Memory usage",
+      "targets": [
+        {
+          "expr": "sum(container_memory_usage_bytes) by (container)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Network RX",
+      "targets": [
+        {
+          "expr": "sum(rate(container_network_receive_bytes_total[1m])) by (container)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Network TX",
+      "targets": [
+        {
+          "expr": "sum(rate(container_network_transmit_bytes_total[1m])) by (container)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 }
+    }
+  ],
+  "schemaVersion": 38,
+  "title": "Containers",
+  "version": 1
+}
