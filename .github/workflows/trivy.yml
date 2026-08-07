@@ -30,7 +30,7 @@ jobs:
           exit-code: 0
 
       - name: Upload FS scan to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4.37.3
+        uses: github/codeql-action/upload-sarif@v4.37.6
         with:
           sarif_file: trivy-fs.sarif
           category: trivy-fs
@@ -46,7 +46,7 @@ jobs:
           exit-code: 0
 
       - name: Upload config scan to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4.37.3
+        uses: github/codeql-action/upload-sarif@v4.37.6
         with:
           sarif_file: trivy-config.sarif
           category: trivy-config
